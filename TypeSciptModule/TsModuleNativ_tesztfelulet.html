@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+    <title>Natív Typescriptről fordított JS kód teszt</title>
+    <!-- Bootstrap CSS only -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet"
+        integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+
+    <!--Ide hívja meg a tesztfilet-->
+
+</head>
+
+<body>
+
+
+
+    <script>
+        function Rng(alsoHatar, felsoHatar) {
+            return Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
+        }
+
+        function TombGenerator(alsoHatar, felsoHatar, meret) {
+            var generaltTomb = [];
+            for (var i = 0; i < meret; i++) {
+                var ujSzam = Math.round(Math.random() * (felsoHatar - alsoHatar)) + alsoHatar;
+                generaltTomb.push(ujSzam);
+            }
+            return generaltTomb;
+        }
+
+        function Duplazo(vizsgaltTomb) {
+            var duplazott = [];
+            for (var i = 0; i < vizsgaltTomb.length; i++) {
+                duplazott.push(vizsgaltTomb[i] * 2);
+            }
+            return duplazott;
+        }
+
+        function PrimekSzama(vizsgaltTomb) {
+            var primek = [];
+            for (var i = 0; i < vizsgaltTomb.length; i++) {
+                if (vizsgaltTomb[i] === 2) {
+                    primek.push(vizsgaltTomb[i]);
+                } else {
+                    for (var oszto = 2; oszto < vizsgaltTomb[i]; oszto++) {
+                        if (vizsgaltTomb[i] % oszto === 0) {
+                            console.log('A szám nem prim.');
+                        }
+                    }
+                    primek.push(vizsgaltTomb[i]);
+                }
+            }
+            var eredmeny = primek.length;
+            return eredmeny;
+        }
+        document.write(TombGenerator(1, 50, 5));
+        document.write('<br>');
+        document.write(Duplazo(TombGenerator(1, 10, 2)));
+        document.write('<br>');
+        document.write(PrimekSzama(TombGenerator(1, 100, 10)));
+    </script>
+    <script src="TsModuleNativ_teszt.js"></script>
+</body>
+</head>
